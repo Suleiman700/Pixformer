@@ -11,4 +11,6 @@ Pixel Platformer - A simple platform game written in JavaScript
 [<img src="imgs/img.png" width="500"/>](imgs/img.png)
 [<img src="imgs/level-selection.png" width="500"/>](imgs/img.png)
 [<img src="imgs/game.png" width="500"/>](imgs/img.png)
-[game-video.mp4](imgs%2Fgame-video.mp4)
+
+https://github.com/user-attachments/assets/dd9149f8-c4c7-40d6-8b11-6ccf8c807083
+
