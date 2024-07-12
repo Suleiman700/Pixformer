@@ -466,7 +466,4 @@ export default class ClarityEngine {
         if (this.log_info) console.log(_message);
     };
 
-    emitEvent(_event, _data) {
-        Events._EventBus.emit(_event, _data);
-    }
 }
