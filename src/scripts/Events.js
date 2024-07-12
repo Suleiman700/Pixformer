@@ -2,7 +2,7 @@
 import React from 'react';
 import EventBus from '../plugins/EventBus/EventBus';
 import {useNavigate, useNavigation} from "react-router-dom";
-import {routesCfg} from '../config/routes-cfg';
+// import {routesCfg} from '../config/routes-cfg';
 
 class Events {
 
@@ -14,6 +14,13 @@ class Events {
         },
         LEVEL_SELECTION: {
             LEVEL_SELECTED: 'EV_BUS_LEVEL_SELECTION_LEVEL_SELECTED'
+        },
+        GAME: {
+            LEVEL: {
+                GOAL: {
+                    REACH: 'EV_BUS_GAME_LEVEL_GOAL_REACH'
+                },
+            },
         }
     }
 
@@ -26,9 +33,9 @@ class Events {
      * @return {void}
      */
     listenEvents_MAIN_MENU() {
-        this._EventBus.on(this._events.MAIN_MENU.START_GAME, () => {
-            window.location.href = routesCfg.LEVEL_SELECTION.path;
-        });
+        // this._EventBus.on(this._events.MAIN_MENU.START_GAME, () => {
+        //     window.location.href = routesCfg.LEVEL_SELECTION.path;
+        // });
     }
 }
 
