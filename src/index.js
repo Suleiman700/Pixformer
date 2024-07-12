@@ -13,6 +13,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import View_Game from "./views/View_Game";
 import View_LevelSelection from "./views/View_LevelSelection";
+import View_MainMenu from "./views/View_MainMenu";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,9 +21,7 @@ root.render(
         <BrowserRouter>
             <Routes>
                 {/*<Route path="/" element={<App />} />*/}
-                {/*<Route path={routesCfg.MAIN_MENU.path} element={routesCfg.MAIN_MENU.view} />*/}
-                {/*<Route path={routesCfg.LEVEL_SELECTION.path} element={routesCfg.LEVEL_SELECTION.view} />*/}
-                {/*<Route path={routesCfg.GAME.path} element={routesCfg.GAME.view} />*/}
+                <Route path='/main-menu' element={<View_MainMenu />} />
                 <Route path="/level-selection" element={<View_LevelSelection />} />
                 <Route path="/game" element={<View_Game />} />
             </Routes>

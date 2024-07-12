@@ -7,9 +7,11 @@ import LevelCard from "../components/level-selection/level-card";
 // import { routesCfg } from "../config/routes-cfg";
 
 import '../assets/style/level-selection.css';
-import background from '../assets/images/bg-pattern-sunburst.svg'
+import background from '../assets/images/bg-pattern-1.svg'
+import buttonNextImg from '../assets/images/button-next.png';
 import {useLocation, useNavigate, useNavigation} from "react-router-dom";
 import {useEffect, useState} from "react";
+import nextBtnPic from "../assets/images/button-next.png";
 
 const View_LevelSelection = () => {
     const location = useLocation();
@@ -21,8 +23,6 @@ const View_LevelSelection = () => {
     }
 
     const onLevelPick = (_level) => {
-        console.log(_level)
-        // console.log(_level)
         navigate('/game', {
             state: {
                 levelId: _level.id,
@@ -30,11 +30,15 @@ const View_LevelSelection = () => {
         });
     }
 
+    useEffect(() => {
+        console.log('here')
+    }, [])
 
-    return (
+
+        return (
         <>
             <div className="d-flex justify-content-center align-items-center" style={{backgroundColor: '#c39681'}}>
-                {/*<img className="bg-pattern-1" src={background}/>*/}
+                <img className="bg-pattern-1" src={background}/>
                 <div className="d-flex justify-content-center align-items-center" style={{height: '100vh'}}>
                 </div>
 
@@ -45,7 +49,8 @@ const View_LevelSelection = () => {
                                 <h1 className="" style={{fontSize: 70, color: 'white'}}>Level Selection</h1>
                             </div>
                         </div>
-                        <div className="row mt-3">
+                        {/*<div className="row mt-3">*/}
+                        <div className="d-flex mt-5">
                             {LevelSelection._levels.map((level, index) => (
                                 <div className="col-sm-12 col-md-3 mt-3" key={index}>
                                     <LevelCard level={level} onClick={(e) => onLevelPick(e)} />
@@ -53,8 +58,14 @@ const View_LevelSelection = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="col-sm-12 text-center">
-                        <button className="btn btn-primary mt-5" onClick={goBack}>Go Back</button>
+                    <div className="col-sm-12 text-center mt-5">
+                        {/*<button className="btn btn-primary mt-5" onClick={goBack}>Go Back</button>*/}
+                        <div className="feedbackform_slide__inner">
+                            <div className="rating monkey popthree">
+                                <span style={{cursor: "pointer"}} onClick={goBack} >Go Back</span>
+                                {/*<img className="next popfour" src={buttonNextImg} onClick={goBack}/>*/}
+                            </div>
+                        </div>
                     </div>
                 </div>
 

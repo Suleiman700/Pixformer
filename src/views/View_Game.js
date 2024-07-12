@@ -8,13 +8,14 @@ import Level_1 from "../levels/Level_1.js";
 // import background from '../assets/images/bg-pattern-sunburst.svg'
 
 import '../assets/style/level-selection.css';
-import {useLocation, useNavigate, useNavigation} from "react-router-dom";
-import {useEffect} from "react";
+import {useLocation, useNavigate, useNavigation, useParams, useSearchParams} from "react-router-dom";
+import {useEffect, useRef} from "react";
 import LevelSelection from "../scripts/LevelSelection";
 
 const View_Game = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const hasRendered = useRef(false); // Create a ref to track logging
 
 
     // Events._EventBus.on(Events._events.GAME.LEVEL.GOAL.REACH, () => {
@@ -22,43 +23,51 @@ const View_Game = () => {
     //     Events._EventBus.off(Events._events.GAME.LEVEL.GOAL.REACH)
     // })
 
+
+
+
     const goBackClick = () => {
         navigate('/level-selection');
     }
 
     useEffect(() => {
-        console.log("loaded");
+        if (!hasRendered.current) {
+            console.log("loaded");
 
-        const levelId = location.state.levelId;
+            const levelId = location.state.levelId;
 
-        // Get level data
-        const levelCfg = LevelSelection._levels.find(level => level.id = levelId);
-        console.log(levelCfg)
+            // Get level data
+            const levelCfg = LevelSelection._levels.find(level => {
+                return level.id === parseInt(levelId); // Use strict equality and parse levelId as an integer
+            });
 
-        const Engine = new ClarityEngine();
+            const Engine = new ClarityEngine();
 
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = levelCfg.data.canvas.width;
-        canvas.height = levelCfg.data.canvas.height;
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = levelCfg.data.canvas.width;
+            canvas.height = levelCfg.data.canvas.height;
 
-        Engine.set_viewport(canvas.width, canvas.height);
-        Engine.load_map(levelCfg.data);
+            Engine.set_viewport(canvas.width, canvas.height);
+            Engine.load_map(levelCfg.data);
 
-        Engine.limit_viewport = true;
+            Engine.limit_viewport = true;
 
-        const Loop = () => {
+            const Loop = () => {
 
-            ctx.fillStyle = '#333';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#333';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            Engine.update();
-            Engine.draw(ctx);
+                Engine.update();
+                Engine.draw(ctx);
 
-            window.requestAnimFrame(Loop);
-        };
+                window.requestAnimFrame(Loop);
+            };
 
-        Loop();
+            Loop();
+
+            hasRendered.current = true;
+        }
     });
 
     return (

@@ -1,17 +1,23 @@
 // View_MainMenu.js
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Events from '../scripts/Events';
 import { audioCfg } from "../config/audio-cfg";
 import AudioPlayer from "../plugins/AudioPlayer/AudioPlayer";
 
 import '../assets/style/main_menu.css';
 import bgImg from '../assets/images/bg-pattern-sunburst.svg'
+import {useNavigate} from "react-router-dom";
 
 const View_MainMenu = () => {
+    const navigate = useNavigate();
     const [isAudioPlayed, setIsAudioPlayed] = useState(false);
 
+    useEffect(() => {
+        console.log('in main-menu')
+    }, [])
+
     const startGame = () => {
-        Events._EventBus.emit(Events._events.MAIN_MENU.START_GAME);
+        navigate('/level-selection')
     };
 
     const handleUserInteraction = () => {
