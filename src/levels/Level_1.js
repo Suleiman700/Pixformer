@@ -1,6 +1,4 @@
 
-import Events from "../scripts/Events";
-
 const Level_1 = {
 
     tile_size: 32,

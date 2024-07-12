@@ -1,6 +1,4 @@
-// View_MainMenu.js
 import React, {useEffect, useState} from 'react';
-import Events from '../scripts/Events';
 import { audioCfg } from "../config/audio-cfg";
 import AudioPlayer from "../plugins/AudioPlayer/AudioPlayer";
 

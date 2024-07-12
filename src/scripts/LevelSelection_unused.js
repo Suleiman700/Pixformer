@@ -3,7 +3,7 @@
 import Level_1 from '../levels/Level_1.js';
 import Level_2 from "../levels/Level_2.js";
 
-class LevelSelection {
+class LevelSelection2 {
 
     _levels = [
         {
@@ -80,4 +80,4 @@ class LevelSelection {
     }
 }
 
-export default new LevelSelection();
+export default new LevelSelection2();

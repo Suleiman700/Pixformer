@@ -1,13 +1,5 @@
 
 
-// import Events from '../scripts/Events';
-// import LevelSelection from "../scripts/LevelSelection";
-// import LevelCard from "../components/level-selection/level-card";
-// import { routesCfg } from "../config/routes-cfg";
-// import '../assets/style/level-selection.css';
-// import buttonNextImg from '../assets/images/button-next.png';
-// import nextBtnPic from "../assets/images/button-next.png";
-
 import background from '../assets/images/bg-pattern-1.svg'
 import {useLocation, useNavigate, useNavigation} from "react-router-dom";
 import {useEffect, useState} from "react";

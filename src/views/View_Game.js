@@ -2,15 +2,9 @@
 import ClarityEngine from "../scripts/ClarityEngine";
 import Events from '../scripts/Events';
 
-import Level_1 from "../levels/Level_1.js";
-
-// import { routesCfg } from "../config/routes-cfg";
-// import background from '../assets/images/bg-pattern-sunburst.svg'
-
 import '../assets/style/level-selection.css';
 import {useLocation, useNavigate, useNavigation, useParams, useSearchParams} from "react-router-dom";
 import {useEffect, useRef} from "react";
-import LevelSelection from "../scripts/LevelSelection";
 import {levelsCfg} from "../config/levels-cfg";
 
 const View_Game = () => {

@@ -25,17 +25,6 @@ class Events {
     }
 
     constructor() {
-        this.listenEvents_MAIN_MENU();
-    }
-
-    /**
-     * Listen for events in the main menu
-     * @return {void}
-     */
-    listenEvents_MAIN_MENU() {
-        // this._EventBus.on(this._events.MAIN_MENU.START_GAME, () => {
-        //     window.location.href = routesCfg.LEVEL_SELECTION.path;
-        // });
     }
 }
 
