@@ -1,6 +1,6 @@
 
 import ClarityEngine from "../scripts/ClarityEngine";
-// import Events from '../scripts/Events';
+import Events from '../scripts/Events';
 
 import Level_1 from "../levels/Level_1.js";
 
@@ -11,20 +11,12 @@ import '../assets/style/level-selection.css';
 import {useLocation, useNavigate, useNavigation, useParams, useSearchParams} from "react-router-dom";
 import {useEffect, useRef} from "react";
 import LevelSelection from "../scripts/LevelSelection";
+import {levelsCfg} from "../config/levels-cfg";
 
 const View_Game = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const hasRendered = useRef(false); // Create a ref to track logging
-
-
-    // Events._EventBus.on(Events._events.GAME.LEVEL.GOAL.REACH, () => {
-    //     console.log('here')
-    //     Events._EventBus.off(Events._events.GAME.LEVEL.GOAL.REACH)
-    // })
-
-
-
 
     const goBackClick = () => {
         navigate('/level-selection');
@@ -32,12 +24,10 @@ const View_Game = () => {
 
     useEffect(() => {
         if (!hasRendered.current) {
-            console.log("loaded");
-
             const levelId = location.state.levelId;
 
             // Get level data
-            const levelCfg = LevelSelection._levels.find(level => {
+            const levelCfg = levelsCfg.find(level => {
                 return level.id === parseInt(levelId); // Use strict equality and parse levelId as an integer
             });
 
@@ -48,6 +38,8 @@ const View_Game = () => {
             canvas.width = levelCfg.data.canvas.width;
             canvas.height = levelCfg.data.canvas.height;
 
+            Engine.currentLevelId = levelId;
+            Engine.levels = levelsCfg;
             Engine.set_viewport(canvas.width, canvas.height);
             Engine.load_map(levelCfg.data);
 
@@ -65,6 +57,12 @@ const View_Game = () => {
             };
 
             Loop();
+
+
+            Events._EventBus.on(Events._events.GAME.LEVEL.GOAL.REACH, () => {
+                console.log('here')
+                // Events._EventBus.off(Events._events.GAME.LEVEL.GOAL.REACH)
+            })
 
             hasRendered.current = true;
         }

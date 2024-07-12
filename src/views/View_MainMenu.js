@@ -37,7 +37,7 @@ const View_MainMenu = () => {
                 <img className="bg-pattern-1" src={bgImg} />
                 <div className="text-center" style={{zIndex: 1}}>
                     <h1 className="" style={{fontSize: 70, color: 'white'}}>PixFormer</h1>
-                    <button className="btn btn-primary btn-fancy mt-3" onClick={startGame}>Start Game</button>
+                    <button className="btn btn-primary btn-fancy mt-5" onClick={startGame}>Start Game</button>
                 </div>
             </div>
         </>

@@ -23,7 +23,7 @@ const Level_1 = {
         {id: 0, colour: '#333', solid: 0},
         {id: 1, colour: '#888', solid: 0},
         {id: 2,colour: '#555',solid: 1,bounce: 0.35 },
-        {id: 3,colour: 'rgba(121, 220, 242, 0.4)',friction: {x: 0.9,y: 0.9},gravity: {x: 0,y: 0.1},jump: 1,fore: 1},
+        {id: 3,colour: 'rgba(121, 220, 242, 0.4)',friction: {x: 0.9,y: 0.9},gravity: {x: 0,y: 0.1},jump: 1,fore: 1}, // Elevator
         {id: 4,colour: '#777',jump: 1},
         {id: 5,colour: '#E373FA',solid: 1,bounce: 1.1},
         {id: 6,colour: '#666',solid: 1,bounce: 0},
@@ -47,7 +47,7 @@ const Level_1 = {
         [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
         [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
         [2, 1, 6, 1, 1, 1, 1, 7, 1, 1, 1, 1, 6, 1, 2],
-        [2, 1, 6, 6, 6, 1, 1, 1, 1, 1, 6, 6, 6, 1, 2],
+        [2, 1, 6, 6, 6, 1, 1, 8, 1, 1, 6, 6, 6, 1, 2],
         [2, 1, 1, 1, 6, 6, 1, 1, 1, 6, 6, 1, 1, 1, 2],
         [2, 1, 1, 1, 1, 6, 6, 1, 6, 6, 1, 1, 1, 1, 2],
         [2, 1, 1, 1, 1, 1, 6, 6, 6, 1, 1, 1, 1, 1, 2],
@@ -99,9 +99,12 @@ const Level_1 = {
     scripts: {
         /* you can just use "this" instead of your engine variable ("game"), but Codepen doesn't like it */
         change_colour: 'this.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
+        // change_colour: () => {
+        //     Events._EventBus.emit(Events._events.GAME.LEVEL.GOAL.REACH)
+        // },
         /* you could load a new map variable here */
-        next_level: 'alert("Yay! You won! Reloading map.");this.load_map(data);',
-        death: 'alert("You died!");Engine.load_map(map);',
+        next_level: 'alert("Yay! You won! Reloading map.");this.next_level()',
+        death: 'alert("You died, Restarting level!");this.load_map(this.current_map);',
         unlock: 'this.current_map.keys[10].solid = 0;this.current_map.keys[10].colour = "#888";'
     }
 };

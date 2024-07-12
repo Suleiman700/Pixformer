@@ -100,7 +100,7 @@ const Level_2 = {
         /* you can just use "this" instead of your engine variable ("game"), but Codepen doesn't like it */
         change_colour: 'this.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
         /* you could load a new map variable here */
-        next_level: 'alert("Yay! You won! Reloading map.");this.load_map(data);',
+        next_level: 'alert("Yay! You won! Reloading map.");this.next_level()',
         death: 'alert("You died!");Engine.load_map(map);',
         unlock: 'this.current_map.keys[10].solid = 0;this.current_map.keys[10].colour = "#888";'
     }

@@ -2,9 +2,8 @@
 .btn-fancy {
     border-bottom-left-radius: 50px;
     border-top-right-radius: 50px;
-    /*border: 3px solid black;*/
+    border: 2px solid black;
     box-shadow: 7px 7px #888888;
     padding: 15px 50px;
-    font-family: "Roboto Condensed", sans-serif;
     font-size: 20px;
 }

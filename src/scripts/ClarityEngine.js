@@ -37,6 +37,9 @@ export default class ClarityEngine {
         },
     };
 
+    currentLevelId = null;
+    levels = [];
+
     constructor() {
         window.onkeydown = this.keydown.bind(this);
         window.onkeyup   = this.keyup.bind(this);
@@ -79,6 +82,21 @@ export default class ClarityEngine {
                 break;
         }
     };
+
+    next_level() {
+        // Get current level index
+        const currentLevelIndex = this.levels.findIndex(level => level.id = this.currentLevelId);
+
+        // Get next level data
+        const nextLevelData = this.levels[currentLevelIndex + 1];
+
+        // Set next level data
+        this.currentLevelId = nextLevelData.id;
+        this.current_map = nextLevelData.data;
+
+        // Load next level
+        this.load_map(this.current_map);
+    }
 
     load_map(map) {
 
@@ -370,8 +388,12 @@ export default class ClarityEngine {
         }
 
         if(this.last_tile != tile.id && tile.script) {
-
-            eval(this.current_map.scripts[tile.script]);
+            if (typeof this.current_map.scripts[tile.script] == 'function') {
+                this.current_map.scripts[tile.script]()
+            }
+            else {
+                eval(this.current_map.scripts[tile.script]);
+            }
         }
 
         this.last_tile = tile.id;

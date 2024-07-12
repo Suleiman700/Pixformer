@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/style/buttons.css'
+import './assets/style/font.css'
 
 import App from './App';
 // import View_MainMenu from './views/MainMenu';
